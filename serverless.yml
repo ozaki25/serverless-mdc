@@ -23,10 +23,11 @@ service: mdc-serverless
 provider:
   name: aws
   runtime: nodejs12.x
+  region: ap-northeast-1
+  profile: dev1
 
 # you can overwrite defaults here
 #  stage: dev
-region: ap-northeast-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
