@@ -9,7 +9,10 @@
     "start:aws": "serverless invoke -f hello",
     "deploy": "serverless deploy",
     "deploy:prod": "serverless deploy --stage production",
-    "rm": "serverless remove"
+    "rm": "serverless remove",
+    "test": "jest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
 }
