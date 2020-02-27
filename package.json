@@ -1,4 +1,9 @@
 {
+  "name": "mdc-serverless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ozaki25",
+  "license": "MIT",
   "devDependencies": {
     "serverless-offline": "^6.0.0-alpha.67"
   }
