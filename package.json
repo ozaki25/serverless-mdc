@@ -5,8 +5,9 @@
   "author": "ozaki25",
   "license": "MIT",
   "scripts": {
-    "start": "serverless invoke local -f hello",
+    "start": "LOCAL=true serverless invoke local -f hello",
     "start:aws": "serverless invoke -f hello",
+    "start:db": "serverless dynamodb start",
     "deploy": "serverless deploy",
     "deploy:prod": "serverless deploy --stage production",
     "rm": "serverless remove",
