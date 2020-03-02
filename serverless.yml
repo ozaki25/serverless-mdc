@@ -19,6 +19,14 @@ provider:
       Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}*'
 plugins:
   - serverless-dynamodb-local
+custom:
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8081
+      inMemory: true
+      convertEmptyValues: true
 functions:
   hello:
     handler: handler.hello
