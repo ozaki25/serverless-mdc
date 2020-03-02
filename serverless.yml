@@ -1,4 +1,4 @@
-service: mdc-serverless
+service: sls-sample
 provider:
   name: aws
   runtime: nodejs12.x
@@ -17,28 +17,17 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}*'
+plugins:
+  - serverless-dynamodb-local
 functions:
   hello:
     handler: handler.hello
 resources:
   Resources:
-    Hoge:
+    Hello:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}-hoge
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-    Fuga:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}-fuga
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
