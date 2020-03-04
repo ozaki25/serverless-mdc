@@ -21,15 +21,26 @@ plugins:
   - serverless-dynamodb-local
 custom:
   dynamodb:
-    stages:
-      - dev
+    stages: dev
     start:
-      port: 8081
+      port: 8082
       inMemory: true
-      convertEmptyValues: true
+      migrate: true
 functions:
   hello:
     handler: handler.hello
+  put:
+    handler: handler.put
+    environment:
+      tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+  get:
+    handler: handler.get
+    environment:
+      tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+  getAll:
+    handler: handler.getAll
+    environment:
+      tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
 resources:
   Resources:
     Hello:
