@@ -26,6 +26,12 @@ custom:
       port: 8082
       inMemory: true
       migrate: true
+      seed: true
+    seed:
+      hello:
+        sources:
+          - table: ${self:provider.environment.DYNAMODB_TABLE}-hello
+            sources: [./seeds/hello.json]
 functions:
   hello:
     handler: handler.hello
