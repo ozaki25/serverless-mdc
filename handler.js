@@ -30,7 +30,7 @@ module.exports.getAll = async () => {
   }
 };
 
-// -d '{"id": "1583335197620"}'
+// -d '{"id": "1"}'
 module.exports.get = async event => {
   console.log({ event });
   const { id } = event;
