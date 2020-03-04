@@ -19,7 +19,7 @@ module.exports.getAll = async () => {
     const result = await dynamo.scan(params).promise();
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify(result.Items),
     };
   } catch (error) {
     console.log({ error });
@@ -55,11 +55,14 @@ module.exports.get = async event => {
   }
 };
 
-// -d hello
+// -d '{"message": "Hello"}'
 module.exports.put = async event => {
+  const id = String(Date.now());
+  const { message } = event;
+
   const params = {
     TableName: tableName,
-    Item: { id: String(Date.now()), message: event },
+    Item: { id, message },
   };
 
   console.log({ params });
