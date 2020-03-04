@@ -30,6 +30,7 @@ module.exports.getAll = async () => {
   }
 };
 
+// -d '{"id": "1583335197620"}'
 module.exports.get = async event => {
   console.log({ event });
   const { id } = event;
@@ -54,6 +55,7 @@ module.exports.get = async event => {
   }
 };
 
+// -d hello
 module.exports.put = async event => {
   const params = {
     TableName: tableName,
