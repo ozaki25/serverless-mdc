@@ -95,6 +95,7 @@ module.exports.put = async event => {
     await dynamo.put(params).promise();
     return {
       statusCode: 200,
+      body: JSON.stringify({ id, message }),
     };
   } catch (error) {
     console.log({ error });
