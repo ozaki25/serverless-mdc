@@ -43,6 +43,10 @@ functions:
     handler: handler.get
     environment:
       tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+  query:
+    handler: handler.query
+    environment:
+      tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
   getAll:
     handler: handler.getAll
     environment:

@@ -31,7 +31,7 @@ module.exports.getAll = async () => {
 };
 
 // -d '{"id": "1"}'
-module.exports.get = async event => {
+module.exports.query = async event => {
   console.log({ event });
   const { id } = event;
   const params = {
@@ -44,7 +44,31 @@ module.exports.get = async event => {
     const result = await dynamo.query(params).promise();
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify(result.Items),
+    };
+  } catch (error) {
+    console.log({ error });
+    return {
+      statusCode: error.statusCode,
+      body: error.message,
+    };
+  }
+};
+
+// -d '{"id": "1"}'
+module.exports.get = async event => {
+  console.log({ event });
+  const { id } = event;
+  const params = {
+    TableName: tableName,
+    Key: { id },
+  };
+  console.log({ params });
+  try {
+    const result = await dynamo.get(params).promise();
+    return {
+      statusCode: 200,
+      body: JSON.stringify(result.Item),
     };
   } catch (error) {
     console.log({ error });
