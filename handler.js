@@ -30,10 +30,10 @@ module.exports.getAll = async () => {
   }
 };
 
-// -d '{"id": "1"}'
+// -d '{"queryStringParameters": {"id": "1"}}'
 module.exports.query = async event => {
   console.log({ event });
-  const { id } = event;
+  const { id } = event.queryStringParameters;
   const params = {
     TableName: tableName,
     KeyConditionExpression: 'id = :id',
@@ -55,10 +55,10 @@ module.exports.query = async event => {
   }
 };
 
-// -d '{"id": "1"}'
+// -d '{"pathParameters": {"id": "1"}}'
 module.exports.get = async event => {
   console.log({ event });
-  const { id } = event;
+  const { id } = event.pathParameters;
   const params = {
     TableName: tableName,
     Key: { id },
@@ -79,10 +79,10 @@ module.exports.get = async event => {
   }
 };
 
-// -d '{"message": "Hello"}'
+// -d '{"body": {"message": "Hello"}}'
 module.exports.put = async event => {
   const id = String(Date.now());
-  const { message } = event;
+  const { message } = JSON.parse(event.body);
 
   const params = {
     TableName: tableName,
