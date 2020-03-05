@@ -46,18 +46,38 @@ functions:
     handler: handler.put
     environment:
       tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+    events:
+      - http:
+          path: messages
+          method: post
   get:
     handler: handler.get
     environment:
       tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+    events:
+      - http:
+          path: messages/{id}
+          method: get
   query:
     handler: handler.query
     environment:
       tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+    events:
+      - http:
+          path: messages/query
+          method: get
+          request:
+            parameters:
+              querystrings:
+                id: true
   getAll:
     handler: handler.getAll
     environment:
       tableName: ${self:provider.environment.DYNAMODB_TABLE}-hello
+    events:
+      - http:
+          path: messages
+          method: get
 resources:
   Resources:
     Hello:
