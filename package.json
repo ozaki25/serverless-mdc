@@ -8,6 +8,7 @@
     "start": "LOCAL=true serverless invoke local -f",
     "start:aws": "serverless invoke -f",
     "start:db": "serverless dynamodb start",
+    "start:api": "serverless offline start",
     "deploy": "serverless deploy",
     "deploy:prod": "serverless deploy --stage production",
     "rm": "serverless remove",
