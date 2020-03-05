@@ -35,6 +35,10 @@ custom:
 functions:
   hello:
     handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
   put:
     handler: handler.put
     environment:
