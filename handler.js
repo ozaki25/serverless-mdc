@@ -1,6 +1,7 @@
 'use strict';
 
 const AWS = require('aws-sdk');
+const getMessage = require('./getMessage');
 
 const options = process.env.LOCAL
   ? { region: 'localhost', endpoint: 'http://localhost:8082' }
@@ -107,8 +108,9 @@ module.exports.put = async event => {
 };
 
 module.exports.hello = async event => {
+  const message = getMessage(event);
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: event }),
+    body: JSON.stringify({ message }),
   };
 };
